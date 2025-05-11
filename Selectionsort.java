@@ -1,42 +1,34 @@
-import java.util.Scanner;
+public class Selectionsort {
+  public static void main(String[] args) {
+      int[] nums = {15, 30, 85, 25, 40, 90, 50, 65, 20, 60};
 
-public class print25 {
+      System.out.println("Before sorting:");
+      printNums(nums);
 
-     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        int i=0;
-        int j=0;
-        int D=0;
-        int A[][]= new int[3][3];
-        int B[][]=new int [3][3];
-        int C[][]=new int [3][3];
-        for (i=0;i<3;i++){
-            for(j=0;j<3;j++){
-                System.out.print("A[" + i + "][" + j + "] = ");
-                A[i][j]=s.nextInt();
-            }
-            
-        }for (i=0;i<3;i++){
-            for(j=0;j<3;j++){
-                System.out.print("B[" + i + "][" + j + "] = ");
-                B[i][j]=s.nextInt();
-            }
+     
+      for (int first = 0; first < nums.length - 1; first++) {
+          int least = first;
+          for (int current = first + 1; current < nums.length; current++) {
+              if (nums[current] < nums[least]) {
+                  least = current;
+              }
+          }
 
-     }for (i=0;i<3;i++){
-        for(j=0;j<3;j++){
-            C[i][j]=A[i][j]*B[i][j];
-        }
+          
+          int temp = nums[least];
+          nums[least] = nums[first];
+          nums[first] = temp;
+      }
 
- }System.out.println(C);System.out.println("Result of A * B:");
- for ( i = 0; i < 3; i++) {
-     for ( j = 0; j < 3; j++) {
-         System.out.print(C[i][j] + "\t");
-     }
-     System.out.println();
- }for(i=0;i<3;i++){
-    for (j=0;j<3;j++){
-        D=D+C[i][j];
-    }
- }System.out.println(D);
+      System.out.println("After sorting:");
+      printNums(nums);
+  }
+
+  public static void printNums(int[] nums) {
+      for (int num : nums) {
+          System.out.println(num);
+      }
+      System.out.println("========");
+  }
 }
-}
+
